@@ -1,94 +1,78 @@
-#include<iostream>
+﻿#include <iostream>
 using namespace std;
 
-class Point
-{
-private:
-    int x;
-    int y;
-    char symbol;
-public:
 
-    Point() {
-        cout << "Constructor by default\n";
+
+
+
+// ДЗ "Реализуйте класс Дробь. 
+// Необходимо хранить числитель и знаменатель в качестве переменных-членов
+// Реализуйте функции-члены для ввода данных в переменные-члены , для выполнения 
+// арифметических операций сложения вычитание умножение"
+
+
+class Fraction 
+{
+private: 
+    int x; 
+    int y; 
+ 
+public:   
+
+    Fraction() { 
+        cout << "Конструктор по умолчанию\n";
         x = 0;
         y = 0;
-        symbol = 'A';
     }
 
-    Point(char z, int a, int b) {
-        cout << "Constructor by 3 params\n";
-        symbol = z;
+    Fraction(int a, int b) { 
+        cout << "Конструктор с двумя параметрами\n";
         x = a;
         y = b;
 
     }
 
-    void Print()
+    void Init(int _x, int _y) 
     {
-        cout << symbol << "-> X: " << x << "\tY: " << y << endl;
-    }
-    void Init(char t, int _x, int _y)
-    {
-        symbol = t;
         x = _x;
         y = _y;
     }
-
-    void SetSymbol(char sym)// setter
+    void Sum(Fraction b)
     {
-        symbol = sym;
+        cout << "X: " << x + b.x << "\tY: " << y + b.y << endl;
     }
-    char GetSymbol()  // getter
+    void Min(Fraction b)
     {
-        return symbol;
+        cout << "X: " << x - b.x << "\tY: " << y - b.y << endl;
     }
-
-    void SetX(int a)
+    void Mul(Fraction b)
     {
-        if (a >= 0)
-        {
-            x = a;
-        }
-    }
-    int GetX()
-    {
-        return x;
+        cout << "X: " << x * b.x << "\tY: " << y * b.y << endl;
     }
 
-    void SetY(int a)
+    void Div(Fraction b)
     {
-        if (a >= 0)
-        {
-            y = a;
-        }
+        cout << "X: " << x / b.x << "\tY: " << y / b.y << endl;
     }
-    int GetY()
-    {
-        return y;
-    }
+
+
 };
-int main()
+int main() 
 {
-    Point a;
+    Fraction a;
+    a.Init(10, -20);
 
-    a.Init('A', 10, -20);
-    a.Print();
-    a.SetSymbol('T');
-    a.Print();
-
-    Point b('B', 10, 20);
-    b.Print();
-    b.SetSymbol('T');
-    b.Print();
+    Fraction b(5, 16);
 
 
-    char c = a.GetSymbol();
-    cout << c << endl;
+    a.Sum(b);
 
-    char c = b.GetSymbol();
-    cout << c << endl;
+    a.Min(b);
+
+    a.Mul(b);
+
+    a.Div(b);
+
 
 
 }
-
