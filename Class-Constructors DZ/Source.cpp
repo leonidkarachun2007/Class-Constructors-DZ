@@ -1,78 +1,81 @@
 ﻿#include <iostream>
 using namespace std;
 
-
-
-
-
-// ДЗ "Реализуйте класс Дробь. 
-// Необходимо хранить числитель и знаменатель в качестве переменных-членов
-// Реализуйте функции-члены для ввода данных в переменные-члены , для выполнения 
-// арифметических операций сложения вычитание умножение"
-
-
-class Fraction 
+class Fraction
 {
-private: 
+private:
     int x; 
     int y; 
- 
-public:   
 
-    Fraction() { 
+public:
+    
+    Fraction() {
         cout << "Конструктор по умолчанию\n";
         x = 0;
-        y = 0;
+        y = 1;
     }
 
-    Fraction(int a, int b) { 
+   
+    Fraction(int a, int b) {
         cout << "Конструктор с двумя параметрами\n";
         x = a;
         y = b;
-
     }
 
-    void Init(int _x, int _y) 
+   
+    void Init(int _x, int _y)
     {
         x = _x;
         y = _y;
     }
+
+ 
     void Sum(Fraction b)
     {
-        cout << "X: " << x + b.x << "\tY: " << y + b.y << endl;
+        int numerator = x * b.y + b.x * y;
+        int denominator = y * b.y;
+        cout << (double)numerator / denominator << endl;
     }
+
+
     void Min(Fraction b)
     {
-        cout << "X: " << x - b.x << "\tY: " << y - b.y << endl;
+        int numerator = x * b.y - b.x * y;
+        int denominator = y * b.y;
+        cout << (double)numerator / denominator << endl;
     }
+
+
     void Mul(Fraction b)
     {
-        cout << "X: " << x * b.x << "\tY: " << y * b.y << endl;
+        int numerator = x * b.x;
+        int denominator = y * b.y;
+        cout << (double)numerator / denominator << endl;
     }
+
 
     void Div(Fraction b)
     {
-        cout << "X: " << x / b.x << "\tY: " << y / b.y << endl;
+        int numerator = x * b.y;
+        int denominator = y * b.x;
+        cout << (double)numerator / denominator << endl;
     }
-
-
 };
-int main() 
+
+int main()
 {
-    Fraction a;
-    a.Init(10, -20);
+    cout << "Создание объекта a:" << endl;
+    Fraction a; 
+    a.Init(10, 20);
 
-    Fraction b(5, 16);
+    cout << "Создание объекта b:" << endl;
+    Fraction b(5, 16); 
 
-
+    cout << "\nВыполнение операций:" << endl;
     a.Sum(b);
-
     a.Min(b);
-
     a.Mul(b);
-
     a.Div(b);
 
-
-
+    return 0;
 }
